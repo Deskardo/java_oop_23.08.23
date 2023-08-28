@@ -10,6 +10,13 @@ class Animal {
         this.age = age;
     }
 
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public Animal(){        
+    }
+
     // метод для издания звука
     public void makeSoung() {
         System.out.println("The animal makes a sound.");
