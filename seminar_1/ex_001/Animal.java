@@ -18,7 +18,7 @@ class Animal {
     }
 
     // метод для издания звука
-    public void makeSoung() {
+    public void makeSound() {
         System.out.println("The animal makes a sound.");
     }
 
