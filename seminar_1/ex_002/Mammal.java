@@ -9,7 +9,7 @@ class Mammal extends Animal{
         this.furColor = furColor;
     }
 
-    // Переопределение метода makeSound()
+    // Переопределение метода makeSound() - полиморфизм
     @Override
     public void makeSound(){
         System.out.println("The mammal makes a mammal sound.");
