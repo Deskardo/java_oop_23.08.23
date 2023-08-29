@@ -27,7 +27,7 @@ class Pet {
     }
 
     // сеттер для установки возраста питомца
-    public void steAge(int age) {
+    public void setAge(int age) {
         if (age > 0) {
             this.age = age;
         }

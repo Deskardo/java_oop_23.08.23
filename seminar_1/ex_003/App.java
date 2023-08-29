@@ -11,7 +11,7 @@ public class App {
 
         // обновление данных собаки
         labrador.setName("Max");
-        labrador.steAge(4);
+        labrador.setAge(4);
 
         // вывод обновленных данных
         System.out.println("Updated Name: "+ labrador.getName());
