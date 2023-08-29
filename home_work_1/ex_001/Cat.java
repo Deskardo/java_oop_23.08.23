@@ -31,5 +31,9 @@ public class Cat {
                 this.age = age;
             }
         }
+
+        public void greet(){
+            System.out.println("Мяу! Меня зовут " + name + ". Мне " + age + " года(лет).");
+        }
     
 }
