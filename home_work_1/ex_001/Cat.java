@@ -1,12 +1,13 @@
 package home_work_1.ex_001;
 
-public class Cat {
-    private String name;
+class Cat extends Owner{
+    private String nickName;
     private int age;
 
     // конструктор для создания экземпляра класса
-    public Cat(String name, int age) {
-        this.name = name;
+    public Cat(String nickName, int age, String name) {
+        super(name);
+        this.nickName = nickName;
         this.age = age;
     }
 
@@ -16,8 +17,8 @@ public class Cat {
         }
     
         // Сеттер для установки имени кота
-        public void setName(String name) {
-            this.name = name;
+        public void setName(String nickName) {
+            this.nickName = nickName;
         }
     
         // геттер для получения возраста кота
@@ -33,7 +34,7 @@ public class Cat {
         }
 
         public void greet(){
-            System.out.println("Мяу! Меня зовут " + name + ". Мне " + age + " года(лет).");
+            System.out.println("Мяу! Меня зовут " + nickName + ". Мне " + age + " года(лет). Мой владелец - " + name);
         }
     
 }

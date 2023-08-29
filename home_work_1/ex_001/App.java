@@ -4,9 +4,9 @@ public class App {
     public static void main(String[] args) {
 
         // создание экземпляра класса
-        Cat matvei = new Cat("matvei", 1);
+        Cat matvei = new Cat("Матвей", 1, "Алексей");
 
-        // вывод приветстви
+        // вывод приветствия
         matvei.greet();
     }
 
