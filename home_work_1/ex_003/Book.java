@@ -44,7 +44,12 @@ public class Book {
 
     // метод показать информацию
     public void displayInfo() {
-        System.out.println("book: " + title + ", " + author +", " + available);
+        System.out.println("book: " + title + ", " + author + ", " + available);
+    }
+
+    @Override
+    public String toString() {
+        return "Book: title " + title + ", author " + author + ", available " +available;
     }
 
 }

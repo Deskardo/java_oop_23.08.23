@@ -4,8 +4,7 @@ import java.util.*;
 
 public class App {
     public static void main(String[] args) {
-        ArrayList<Book> catalog = new ArrayList<Book>();
-        Library library = new Library(catalog);
+        Library library = new Library();
 
         Book book = new Book("Этюды черни", "Ольга Ускова", true);
         Book book1 = new Book("Благословение небожителей", "Тунсю Мосян", true);

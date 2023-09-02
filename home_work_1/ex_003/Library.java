@@ -3,11 +3,15 @@ package home_work_1.ex_003;
 import java.util.*;
 
 class Library {
-    private ArrayList<Book> catalog = new ArrayList<>();
+    private static ArrayList<Book> catalog = new ArrayList<>();
 
     // базовый конструктор каталога
     public Library(ArrayList<Book> catalog) {
         this.catalog = catalog;
+    }
+
+    public Library() {
+        this(catalog);
     }
 
     // добавление книг в каталог
