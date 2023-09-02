@@ -1,6 +1,6 @@
 package home_work_2.ex_002;
 
-public class Rectangle {
+public class Rectangle implements IcalulateAreaDefault{
     // базовые переменные ширина и высота прямоугольника
     private int width;
     private int height;
@@ -43,7 +43,7 @@ public class Rectangle {
 
     // метод вычисления периметра
     public void calculatePerimeter() {
-        System.out.println("Периметр заданного прямоугольника: " + (width + height) * IperimetrConstants.PERIMETR_MULTIPLIER);
+        System.out.println("Периметр заданного прямоугольника: " + (width + height) * IperimeterConstants.PERIMETR_MULTIPLIER);
     }
 
 }

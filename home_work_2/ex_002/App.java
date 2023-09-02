@@ -2,7 +2,12 @@ package home_work_2.ex_002;
 
 public class App {
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle(5, 2);
+        int width = 5;
+        int height = 2;
+        Rectangle rectangle = new Rectangle(width, height);
+
+        rectangle.calculateArea(width, height);
+        System.out.println("The area: " + rectangle.calculateArea(width, height));
 
         rectangle.calculateArea();
         rectangle.calculatePerimeter();
