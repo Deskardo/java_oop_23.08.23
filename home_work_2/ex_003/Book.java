@@ -8,12 +8,13 @@ public class Book {
     private boolean available;
 
     // базовый конструктор
-    public Book(String title, String author, boolean available) {
-        this.title = title;
-        this.author = author;
-        this.available = available;
-    }
+    // public Book(String title, String author, boolean available) {
+    //     this.title = title;
+    //     this.author = author;
+    //     this.available = available;
+    // }
 
+    // расширенный метод добавления книги в список, через ввод данных, закрытие сканера происходит в меню.
     public Book() {
         Scanner scan = new Scanner(System.in);
         String line = "";
@@ -56,8 +57,6 @@ public class Book {
                 System.out.print("Введено не корректное значение.");
             }
         }
-
-        scan.close();
     }
 
     // гетер названия

@@ -4,6 +4,7 @@ package home_work_2.ex_003;
 interface IMenu {
 
     default void printMenu() {
+        System.out.println();
         System.out.println("1. Добавить книгу в библиотеку Library");
         System.out.println("2. Удалить книгу из библиотеки");
         System.out.println("3. Показать все доступные книги");
@@ -12,7 +13,5 @@ interface IMenu {
         System.out.println();
         System.out.println("Введите нужный пункт.");
     }
-
-    
 
 }
