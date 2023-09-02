@@ -43,7 +43,7 @@ public class Rectangle {
 
     // метод вычисления периметра
     public void calculatePerimeter() {
-        System.out.println("Периметр заданного прямоугольника: " + (width + height) * 2);
+        System.out.println("Периметр заданного прямоугольника: " + (width + height) * IperimetrConstants.PERIMETR_MULTIPLIER);
     }
 
 }
