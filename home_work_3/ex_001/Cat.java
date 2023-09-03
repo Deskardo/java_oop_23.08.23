@@ -17,6 +17,10 @@ class Cat extends Owner implements IgetSet {
         return name;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
     // Сеттер для установки имени кота
     @Override
     public void setName(String nickName) {
@@ -45,5 +49,4 @@ class Cat extends Owner implements IgetSet {
     public String toString() {
         return "Кот: " + nickName + "(" + age + " лет)" + ". Владелец: " + name;
     }
-
 }
