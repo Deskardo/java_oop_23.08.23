@@ -62,7 +62,6 @@ class Library implements IMenu, Icase {
             }
 
         } while (!"n".equals(Line));
-
     }
 
     // метод удаления книги из каталога, путем указания индекса данной книги

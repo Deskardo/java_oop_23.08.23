@@ -9,12 +9,13 @@ public class Book {
 
     // базовый конструктор
     // public Book(String title, String author, boolean available) {
-    //     this.title = title;
-    //     this.author = author;
-    //     this.available = available;
+    // this.title = title;
+    // this.author = author;
+    // this.available = available;
     // }
 
-    // расширенный метод добавления книги в список, через ввод данных, закрытие сканера происходит в меню.
+    // расширенный метод добавления книги в список, через ввод данных, закрытие
+    // сканера происходит в меню.
     public Book() {
         Scanner scan = new Scanner(System.in);
         String line = "";
@@ -49,10 +50,10 @@ public class Book {
         while (flag) {
             System.out.println("Введите показатель доступности книги (true/false): ");
             line = scan.nextLine().toLowerCase().trim();
-            if (line.equals("true") || line.equals("false")){
-            boolean flag2 = Boolean.parseBoolean(line);
-            this.available = flag2;
-            flag = false;
+            if (line.equals("true") || line.equals("false")) {
+                boolean flag2 = Boolean.parseBoolean(line);
+                this.available = flag2;
+                flag = false;
             } else {
                 System.out.print("Введено не корректное значение.");
             }
