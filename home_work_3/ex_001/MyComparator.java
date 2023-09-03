@@ -2,6 +2,7 @@ package home_work_3.ex_001;
 
 import java.util.*;
 
+// класс компаратора для сортировки сначала по имени владельца, затем по возрасту кота
 public class MyComparator implements Comparator<Cat> {
     @Override
     public int compare(Cat o1, Cat o2) {
