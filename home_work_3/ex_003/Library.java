@@ -50,57 +50,70 @@ class Library implements IMenu, Icase {
         Scanner scan = new Scanner(System.in);
         String Line = "";
         do {
-            System.out.println("Желаете добавить книгу? (y/n)");
-            Line = scan.nextLine().toLowerCase();
-            if (!Line.equals(null) && "y".equals(Line)) {
-                Book book = new Book();
-                catalog.add(book);
-            } else if ("n".equals(Line)) {
-                System.out.println("Спасибо, до встречи!");
-            } else {
-                System.out.println("Вы ввели неверные данные, попробуйте ещё.");
+            try {
+                System.out.println("Желаете добавить книгу? (y/n)");
+                Line = scan.nextLine().toLowerCase();
+                if ("y".equals(Line)) {
+                    Book book = new Book();
+                    catalog.add(book);
+                } else if ("n".equals(Line)) {
+                    System.out.println("Спасибо, до встречи!");
+                } else {
+                    System.out.println("Вы ввели неверные данные, попробуйте ещё.");
+                }
+            } catch (NullPointerException e) {
+                System.out.println("Произошла ошибка. Пожалуйста, попробуйте еще раз.");
+                scan.nextLine(); // очистить буфер ввода
             }
 
         } while (!"n".equals(Line));
+        scan.close();
     }
 
     // метод удаления книги из каталога, путем указания индекса данной книги
     @Override
     public void case2() {
         Scanner scan = new Scanner(System.in);
-        String Line = "";
+        String line = "";
         int i;
         if (catalog.size() > 0) {
             do {
-
                 System.out.println("Желаете удалить книгу? (y/n)");
-                Line = scan.nextLine().toLowerCase();
-                if (!Line.equals(null) && "y".equals(Line)) {
-                    System.out.println("Введите номер книги для удаления: ");
-                    Line = scan.nextLine();
-                    try {
-                        i = Integer.parseInt(Line);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Неверный ввод");
+                line = scan.nextLine().toLowerCase();
+                if ("y".equals(line)) {
+                    while (true) {
+                        try {
+                            System.out.println("Введите номер книги для удаления: ");
+                            i = scan.nextInt();
+                            if (i < 1 || i > catalog.size()) {
+                                throw new IllegalArgumentException();
+                            }
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Введите пожалуйста число. ");
+                            scan.nextLine();
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Число должно быть от 1 до " + catalog.size() + ".");
+                            scan.nextLine();
+                        }
                     }
-                    i = Integer.parseInt(Line);
-                    if (i < catalog.size()) {
-                        System.out.println("Книга №" + i + " " + catalog.get(i) + " Успешно удалена");
-                        catalog.remove(i);
-                    } else {
-                        System.out.println("В каталоге нет книги с таким номером");
+                    Book bookToRemove = catalog.remove(i - 1);
+                    System.out.println("Книга \"" + bookToRemove.getTitle() + "\" автора " + bookToRemove.getAuthor()
+                            + " удалена из каталога.");
+                    if (catalog.size() < 1) {
+                        System.out.println("Каталог пуст.");
+                        break;
                     }
-
-                } else if ("n".equals(Line)) {
+                } else if ("n".equals(line)) {
                     System.out.println("Спасибо, до встречи!");
                 } else {
                     System.out.println("Вы ввели неверные данные, попробуйте ещё.");
                 }
-
-            } while (!"n".equals(Line));
+            } while (!"n".equals(line));
         } else {
-            System.out.println("В каталоге недостаточно книг для удаления.");
+            System.out.println("Каталог пуст.");
         }
+        scan.close();
     }
 
     // вывод доступных книг в каталоге (i отражет номер доступной книги во всем
@@ -127,36 +140,47 @@ class Library implements IMenu, Icase {
     @Override
     public void case4() {
         Scanner scan = new Scanner(System.in);
-        String Line = "";
+        String line = "";
         int i = 0;
         if (catalog.size() > 0) {
-            System.out.println("введите автора для поиска: ");
-            Line = scan.nextLine().toLowerCase();
-            if (!Line.equals(null)) {
-                System.out.println("В каталоге есть следующие книги: ");
-                for (Book book : catalog) {
-                    i++;
-                    if (book.getAuthor().equals(Line)) {
-                        System.out.print("№" + i + ". ");
-                        book.displayInfo();
+            do {
+                System.out.println("Введите автора для поиска: ");
+                line = scan.nextLine().trim(); // удаляем лишние пробелы
+                if (!line.isEmpty()) { // проверяем на пустую строку
+                    System.out.println("В каталоге есть следующие книги: ");
+                    for (Book book : catalog) {
+                        i++;
+                        if (book.getAuthor().equalsIgnoreCase(line)) { // используем ignoreCase для игнорирования
+                                                                       // регистра
+                            System.out.print("№" + i + ". ");
+                            book.displayInfo();
+                        }
                     }
+                    if (i == 0) {
+                        System.out.println("Книг данного автора в каталоге нет.");
+                    }
+                } else {
+                    System.out.println("Вы не ввели автора, попробуйте ещё.");
                 }
-            } else {
-                System.out.println("Вы ввели неверные данные, попробуйте ещё.");
-            }
+            } while (line.isEmpty());
         } else {
-            System.out.println("В каталоге недостаточно книг");
+            System.out.println("В каталоге недостаточно книг.");
         }
+        scan.close();
     }
 
     // основное меню работы с каталогом
     public void start() {
-        Scanner scan = new Scanner(System.in);
-        String readLine = "";
         Integer key = 0;
+        Scanner scan2 = new Scanner(System.in);
         do {
+            String readLine = "";
             printMenu();
-            readLine = scan.nextLine();
+            if (scan2.hasNextLine()) {
+                readLine = scan2.nextLine();
+            } else {
+                break;
+            }
 
             try {
                 key = Integer.parseInt(readLine);
@@ -184,9 +208,7 @@ class Library implements IMenu, Icase {
                     System.out.println("Не корректный ввод.");
 
             }
-
         } while (key != 5);
-        scan.close();
+        scan2.close();
     }
-
 }

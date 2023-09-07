@@ -1,5 +1,7 @@
 package home_work_3.ex_003;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Book {
@@ -47,17 +49,27 @@ public class Book {
 
         flag = true;
 
-        while (flag) {
-            System.out.println("Введите показатель доступности книги (true/false): ");
-            line = scan.nextLine().toLowerCase().trim();
-            if (line.equals("true") || line.equals("false")) {
-                boolean flag2 = Boolean.parseBoolean(line);
-                this.available = flag2;
-                flag = false;
-            } else {
-                System.out.print("Введено не корректное значение.");
-            }
+while (flag) {
+    try {
+        System.out.println("Введите показатель доступности книги (true/false): ");
+        line = scan.nextLine().toLowerCase().trim();
+        if (line.equals("true") || line.equals("false")) {
+            boolean flag2 = Boolean.parseBoolean(line);
+            this.available = flag2;
+            flag = false;
+        } else {
+            System.out.print("Введено не корректное значение.");
         }
+    } catch (InputMismatchException e) {
+        System.out.println("Введено некорректное значение. Пожалуйста, введите true или false.");
+        scan.nextLine(); // очистить буфер ввода
+    } catch (NoSuchElementException e) {
+        System.out.println("Вы не ввели значение. Пожалуйста, попробуйте еще раз.");
+        scan.nextLine(); // очистить буфер ввода
+    } finally {
+        scan.close();
+    }
+}
     }
 
     // гетер названия
