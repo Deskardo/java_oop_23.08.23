@@ -1,4 +1,4 @@
-package lesson_5.Ex_001;
+package Ex_001;
 
 public class Sum<T extends Number> {
     private T num1;
