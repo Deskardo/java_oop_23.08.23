@@ -31,7 +31,7 @@ public class Container<T> {
         this.item = item;
     }
 
-    // public void printType() { // выношу печать типа в отдельный класс
+    // public void printType() { // выношу печать типа в отдельный класс, таким образом нет привязки к базовому конструктору.
     // System.out.println("Тип элемента: " + item.getClass().getName());
     // }
 
